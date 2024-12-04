@@ -5,6 +5,10 @@ const pb = new PocketBase("https://api.amraleth.xyz");
 
 export const imageUrl = "https://api.amraleth.xyz/api/files/pbc_3503988954/";
 
+/**
+ * Figures the color of a marker out
+ * @param level The level that marker should have
+ */
 export function getColorForMarkerLevel(level: string): string {
     switch (level.toUpperCase()) {
         case "IMMEDIATE":
@@ -18,6 +22,10 @@ export function getColorForMarkerLevel(level: string): string {
     }
 }
 
+/**
+ * Figures the color for a given label out
+ * @param label The label
+ */
 export function getColorForLabel(label: string): string {
     switch (label.toUpperCase()) {
         case "WINTER":
@@ -29,6 +37,9 @@ export function getColorForLabel(label: string): string {
     }
 }
 
+/**
+ * Represents a Marker
+ */
 export interface Marker {
     collectionId: string;
     collectionName: string;
@@ -43,6 +54,9 @@ export interface Marker {
     level: string;
 }
 
+/**
+ * Represents the database schema for a marker
+ */
 const MarkerSchema = z.object({
     collectionId: z.string(),
     collectionName: z.string(),
@@ -57,6 +71,10 @@ const MarkerSchema = z.object({
     level: z.string()
 })
 
+/**
+ * Fetches all markers for a given location
+ * @param locationName The location, right now it fetches all of them
+ */
 export async function fetchMarkers(locationName: string): Promise<Marker[]> {
     const markers = await pb.collection("markers").getFullList();
     return markers.map((marker) => MarkerSchema.parse(marker) as Marker);
