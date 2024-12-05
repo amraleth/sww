@@ -1,0 +1,14 @@
+{
+	email me@amraleth.xyz
+}
+
+api.schulwegwarnung.de {
+	request_body {
+		max_size 10MB	
+	}
+	reverse_proxy 45.155.173.205:8090 {
+		transport http {
+			read_timeout 360s
+		}
+	}
+}
