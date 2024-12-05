@@ -1,9 +1,10 @@
 import PocketBase from "pocketbase";
 import {z} from "zod";
 
-const pb = new PocketBase("https://api.schulwegwarnung.de");
+const url = "https://api.schulwegwarnung.de";
+const pb = new PocketBase(url);
 
-export const imageUrl = "https://api.schulwegwarnung.de/api/files/pbc_3503988954/";
+export const ImageUrl = url + "/api/files/pbc_3503988954/";
 
 /**
  * Figures the color of a marker out

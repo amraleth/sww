@@ -2,9 +2,9 @@ import mapboxgl from "mapbox-gl";
 import {Map} from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import {onMount} from "solid-js";
-import {switchLonLat} from "../util/lon_lat";
-import "../data/pocketbase";
-import {fetchMarkers, getColorForLabel, getColorForMarkerLevel, imageUrl} from "../data/pocketbase";
+import {switchLonLat} from "../util/LatConverter";
+import "../data/Pocketbase";
+import {fetchMarkers, getColorForLabel, getColorForMarkerLevel, ImageUrl} from "../data/Pocketbase";
 
 export default function MapComponent() {
     let mapContainer: string | HTMLElement;
@@ -64,7 +64,7 @@ export default function MapComponent() {
                 if (marker.images != undefined) {
                     popUpContent += `
                         <div>
-                            <img src="${imageUrl + marker.id + "/" + marker.images[0]}" alt="${marker.description}" style="max-width: 100%; height: auto; border-radius: 5px;"
+                            <img src="${ImageUrl + marker.id + "/" + marker.images[0]}" alt="${marker.description}" style="max-width: 100%; height: auto; border-radius: 5px;"
                         </div>
                     `;
                 }
