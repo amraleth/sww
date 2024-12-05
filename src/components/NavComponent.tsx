@@ -5,7 +5,7 @@ export default function NavComponent() {
                 <a href="/">SchulwegWarnung</a>
             </li>
             <li class={`mx-1.5 sm:mx-6`}>
-                <a href="https://github.com/amraleth/sww">Github</a>
+                <a href="https://github.com/amraleth/sww" target={"_blank"} rel={"noopener noreferrer"}>Github</a>
             </li>
         </ul>
     </nav>
