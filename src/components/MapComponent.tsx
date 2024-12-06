@@ -13,7 +13,7 @@ export default function MapComponent() {
 
         //TODO: different locations
         const center = switchLonLat([52.47451265096441, 10.349770457268184]);
-        const markers = await fetchMarkers("meinersen");
+        const markers = await fetchMarkers();
 
         const map = new Map({
             // @ts-ignore

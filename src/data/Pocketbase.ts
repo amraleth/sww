@@ -83,9 +83,8 @@ const MarkerSchema = z.object({
 
 /**
  * Fetches all markers for a given location
- * @param locationName The location, right now it fetches all of them
  */
-export async function fetchMarkers(locationName: string): Promise<Marker[]> {
+export async function fetchMarkers(): Promise<Marker[]> {
     const markers = await pb.collection("markers").getFullList();
     return markers.map((marker) => MarkerSchema.parse(marker) as Marker);
 }
