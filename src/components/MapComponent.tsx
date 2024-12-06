@@ -68,7 +68,9 @@ export default function MapComponent() {
                 if (marker.images != undefined) {
                     popUpContent += `
                         <div>
-                            <img src="${ImageUrl + marker.id + "/" + marker.images[0]}" alt="${marker.description}" style="max-width: 100%; height: auto; border-radius: 5px;"
+                            <img src="${ImageUrl + marker.id + "/" + marker.images[0]}" alt="${marker.description}" 
+                            style="max-width: 100%; height: auto; border-radius: 5px;"
+                            class="mt-3"
                         </div>
                     `;
                 }
