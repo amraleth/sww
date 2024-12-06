@@ -37,7 +37,7 @@ export function getColorForLabel(label: string): string {
         case "NICHT EINSEHBAR":
             return "#ba2342";
         case "UNÜBERSICHTLICH":
-            return "#bdb520";
+            return "#2079bd";
         case "AMPEL":
             return "#bd6420";
         case "KREUZUNG":
