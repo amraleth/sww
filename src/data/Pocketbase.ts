@@ -17,9 +17,9 @@ export function getColorForMarkerLevel(level: string): string {
         case "INFERRED":
             return "#bf761d";
         case "LOW":
-            return "#bed143";
+            return "#203abd";
         default:
-            return "#1d40bf";
+            return "#44464f";
     }
 }
 
