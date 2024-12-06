@@ -25,6 +25,7 @@ export function getColorForMarkerLevel(level: string): string {
 
 /**
  * Figures the color for a given label out
+ * Available labels are 'Winter, Ausfahrt, Nicht einsehbar, Unübersichtlich, Ampel, Kreuzung'
  * @param label The label
  */
 export function getColorForLabel(label: string): string {
@@ -33,6 +34,14 @@ export function getColorForLabel(label: string): string {
             return "#457abf";
         case "AUSFAHRT":
             return "#57bd8a";
+            case "NICHT EINSEHBAR":
+                return "#ba2342";
+        case "UNÜBERSICHTLICH":
+            return "#bdb520";
+        case "AMPEL":
+            return "#bd6420";
+        case "KREUZUNG":
+            return "#5c20bd"
         default:
             return "#4a544f";
     }

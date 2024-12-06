@@ -29,14 +29,18 @@ export default function MapComponent() {
                 let popUpContent = `
                 <div>
                     <div>
-                        <p class='text-lg'>${marker.name}</p>
+                        <p class='text-lg font-bold'>${marker.name}</p>
                     </div>
                     <div>
-                        <p>${marker.streetName}</p>
+                        <p class="underline">${marker.streetName}</p>
                     </div>
                     
                         <div style='display: flex; flex-wrap: wrap;'>`
-                marker.label.forEach((label) => {
+
+                let labels = marker.label;
+                labels = labels.sort((a, b) => a.localeCompare(b));
+
+                labels.forEach((label) => {
                     const color = getColorForLabel(label);
                     popUpContent += `
                     <div style="
@@ -70,7 +74,7 @@ export default function MapComponent() {
                 }
                 popUpContent += "</div>"
 
-                const popup = new mapboxgl.Popup({offset: 25})
+                const popup = new mapboxgl.Popup({offset: 25, closeButton: false})
                     .setHTML(popUpContent);
 
                 const mapMarker = new mapboxgl.Marker({color: getColorForMarkerLevel(marker.level)})
