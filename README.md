@@ -1,4 +1,6 @@
 # SWW (SchulwegWarnung)
+[![wakatime](https://wakatime.com/badge/github/amraleth/sww.svg)](https://wakatime.com/badge/github/amraleth/sww)
+
 
 SchulwegWarnung is a project, that allows parents to view their children's way to school and check for dangerous places
 and situations they might encounter.
