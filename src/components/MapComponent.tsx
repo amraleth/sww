@@ -1,10 +1,9 @@
-import mapboxgl from "mapbox-gl";
-import {Map} from "mapbox-gl";
+import mapboxgl, {Map, Popup, Marker as MapBoxMarker} from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import {onMount} from "solid-js";
 import {switchLonLat} from "../util/LatConverter";
 import "../data/Pocketbase";
-import {fetchMarkers, getColorForLabel, getColorForMarkerLevel, ImageUrl} from "../data/Pocketbase";
+import {fetchMarkers, getColorForLabel, getColorForMarkerLevel, ImageUrl, Marker} from "../data/Pocketbase";
 
 export default function MapComponent() {
     let mapContainer: string | HTMLElement;
@@ -12,8 +11,8 @@ export default function MapComponent() {
         mapboxgl.accessToken = "pk.eyJ1IjoiYW1yYWxldGgiLCJhIjoiY20zc2g3d3NmMGZvNjJxcXZta3p6MGtneSJ9.ArplgD8cpuY3yrbOTZwgBw";
 
         //TODO: different locations
-        const center = switchLonLat([52.47451265096441, 10.349770457268184]);
-        const markers = await fetchMarkers();
+        const center: [number, number] = switchLonLat([52.47451265096441, 10.349770457268184]);
+        const markers: Marker[] = await fetchMarkers();
 
         const map = new Map({
             // @ts-ignore
@@ -24,9 +23,9 @@ export default function MapComponent() {
         });
 
         map.on("load", () => {
-            markers.forEach((marker) => {
+            markers.forEach((marker: Marker) => {
 
-                let popUpContent = `
+                let popUpContent: string = `
                 <div>
                     <div>
                         <p class='text-lg font-bold'>${marker.name}</p>
@@ -36,11 +35,11 @@ export default function MapComponent() {
                     </div>
                         <div style='display: flex; flex-wrap: wrap;'>`
 
-                let labels = marker.label;
-                labels = labels.sort((a, b) => a.localeCompare(b));
+                let labels: [string] = marker.label;
+                labels = labels.sort((a: string, b: string): number => a.localeCompare(b));
 
-                labels.forEach((label) => {
-                    const color = getColorForLabel(label);
+                labels.forEach((label: string) => {
+                    const color: string = getColorForLabel(label);
                     popUpContent += `
                     <div class="pt-2 pb-2">
                     <div style="
@@ -74,10 +73,10 @@ export default function MapComponent() {
                 }
                 popUpContent += "</div>"
 
-                const popup = new mapboxgl.Popup({offset: 25, closeButton: false, maxWidth: "300px"})
+                const popup: Popup = new Popup({offset: 25, closeButton: false, maxWidth: "300px"})
                     .setHTML(popUpContent);
 
-                const mapMarker = new mapboxgl.Marker({color: getColorForMarkerLevel(marker.level)})
+                const mapMarker: MapBoxMarker = new MapBoxMarker({color: getColorForMarkerLevel(marker.level)})
                     .setLngLat(switchLonLat([marker.longitude, marker.latitude]))
                     .setPopup(popup)
                     .addTo(map);
