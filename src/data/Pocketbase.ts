@@ -4,7 +4,7 @@ import {z} from "zod";
 const url = "https://api.schulwegwarnung.de";
 const pb = new PocketBase(url);
 
-export const ImageUrl = url + "/api/files/pbc_3503988954/";
+export const ImageUrl = url + "/api/files/";
 
 /**
  * Figures the color of a marker out
@@ -34,8 +34,8 @@ export function getColorForLabel(label: string): string {
             return "#457abf";
         case "AUSFAHRT":
             return "#57bd8a";
-            case "NICHT EINSEHBAR":
-                return "#ba2342";
+        case "NICHT EINSEHBAR":
+            return "#ba2342";
         case "UNÜBERSICHTLICH":
             return "#bdb520";
         case "AMPEL":

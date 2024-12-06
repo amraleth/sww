@@ -34,7 +34,6 @@ export default function MapComponent() {
                     <div>
                         <p class="underline">${marker.streetName}</p>
                     </div>
-                    
                         <div style='display: flex; flex-wrap: wrap;'>`
 
                 let labels = marker.label;
@@ -43,19 +42,18 @@ export default function MapComponent() {
                 labels.forEach((label) => {
                     const color = getColorForLabel(label);
                     popUpContent += `
+                    <div class="pt-2 pb-2">
                     <div style="
                         background-color: ${color};
                         color: white;
-                        padding: 4px;
-                        margin-top: 5px;
-                        margin-right: 10px;
-                        margin-bottom: 5px;
+                        padding: 4px 4px;
+                        margin-right: 4px;
                         border-radius: 5px;
                         font-weight: bold;
                         cursor: pointer;
                         display: inline-block;
                         text-align: center;
-                    ">${label} </div>
+                    ">${label} </div></div>
                     `
                 });
                 popUpContent += "</div>";
@@ -68,7 +66,7 @@ export default function MapComponent() {
                 if (marker.images != undefined) {
                     popUpContent += `
                         <div>
-                            <img src="${ImageUrl + marker.id + "/" + marker.images[0]}" alt="${marker.description}" 
+                            <img src="${ImageUrl + marker.collectionId + "/" + marker.id + "/" + marker.images[0]}" alt="${marker.description}" 
                             style="max-width: 100%; height: auto; border-radius: 5px;"
                             class="mt-3"
                         </div>
@@ -76,7 +74,7 @@ export default function MapComponent() {
                 }
                 popUpContent += "</div>"
 
-                const popup = new mapboxgl.Popup({offset: 25, closeButton: false})
+                const popup = new mapboxgl.Popup({offset: 25, closeButton: false, maxWidth: "300px"})
                     .setHTML(popUpContent);
 
                 const mapMarker = new mapboxgl.Marker({color: getColorForMarkerLevel(marker.level)})

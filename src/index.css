@@ -7,53 +7,20 @@
     --foreground-rgb: 0, 0, 0;
 }
 
-body {
-    background: rgb(var(--background-rgb));
-    color: rgb(var(--foreground-rgb));
-
+html, body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .map-container {
+    flex-grow: 1;
     overflow: hidden;
-    height: 100%;
-    width: 100%;
-}
-
-.carousel-container {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-}
-
-.carousel-images {
-    display: flex;
-    transition: transform 0.3s ease;
-}
-
-.carousel-images img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.carousel-button-left {
-    left: 0;
-}
-
-.carousel-button-right {
-    right: 0;
 }
