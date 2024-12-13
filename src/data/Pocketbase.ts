@@ -62,6 +62,7 @@ export interface Marker {
     label: [string];
     name: string;
     level: string;
+    recommendation: string;
 }
 
 /**
@@ -78,7 +79,8 @@ const MarkerSchema = z.object({
     description: z.string().optional(),
     label: z.array(z.string()),
     name: z.string(),
-    level: z.string()
+    level: z.string(),
+    recommendation: z.string(),
 })
 
 /**

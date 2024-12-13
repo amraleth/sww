@@ -62,6 +62,14 @@ export default function MapComponent() {
                     </div>
                 `;
 
+                if (marker.recommendation != undefined && marker.recommendation != "") {
+                    popUpContent += `
+                    <div>
+                        <p>Empfehlung: ${marker.recommendation}</p>
+                    </div>
+                    `;
+                }
+
                 if (marker.images != undefined) {
                     popUpContent += `
                         <div>
