@@ -68,7 +68,7 @@ export interface Marker {
 /**
  * Represents the database schema for a marker
  */
-const MarkerSchema = z.object({
+const markerSchema = z.object({
     collectionId: z.string(),
     collectionName: z.string(),
     id: z.string(),
@@ -88,5 +88,5 @@ const MarkerSchema = z.object({
  */
 export async function fetchMarkers(): Promise<Marker[]> {
     const markers = await pb.collection("markers").getFullList();
-    return markers.map((marker) => MarkerSchema.parse(marker) as Marker);
+    return markers.map((marker) => markerSchema.parse(marker) as Marker);
 }
